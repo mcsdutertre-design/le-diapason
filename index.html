@@ -1247,8 +1247,9 @@ function select(i, playIt) {
 /* ---------- direct ---------- */
 const LV = { ws: 0, on: false, stream: null, src: null, proc: null, mute: null, trk: null, chunks: [], n: 0, sr: 48000, frames: [], t: 0, noise: 0.001, peak: 0, cur: null, needle: 0, active: false, last: -9, center: 60, level: 0, hz: 0, raf: 0 };
 const lmsg = t => { $('#lmsg').textContent = t || ''; };
+const HOSTED = 'https://mcsdutertre-design.github.io/le-diapason/';
 const FRAME_HINT = "Dans l'aperçu de Claude, le navigateur bloque le micro.";
-const FRAME_HTML = `<b>Dans Claude, le micro est bloqué</b>&#8239;: pas de mesure en temps réel ici. «&#8239;S'enregistrer en vidéo&#8239;» ouvre l'appareil photo&#8239;: chante, valide, et la prise est analysée note par note. Le vrai direct marche dès que la page est ouverte hors de Claude, dans un navigateur.`;
+const FRAME_HTML = `<b>Dans Claude, le micro est bloqué</b>&#8239;: pas de mesure en temps réel ici. «&#8239;S'enregistrer en vidéo&#8239;» ouvre l'appareil photo&#8239;: chante, valide, et la prise est analysée note par note. Pour le vrai direct, ouvre <a href="${HOSTED}" target="_blank" rel="noopener">la version en ligne</a> dans Safari et autorise le micro.`;
 async function liveStart() {
   const ctx = ac(); session('play-and-record');
   const r = ctx.resume ? ctx.resume() : null;
