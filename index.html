@@ -63,14 +63,13 @@ h1{font:600 clamp(30px,5vw,40px)/1.05 var(--disp);letter-spacing:-.015em;margin:
 .seg button[aria-pressed=true]{background:var(--ink);color:var(--bg)}
 .num,select{padding:0 10px;min-height:44px;border:1px solid var(--rule);border-radius:12px;background:var(--bg);font-size:16px}
 .num{width:6.2em;font-variant-numeric:tabular-nums}
-#rec{display:grid;grid-template-areas:"file" "prog" "head" "chart" "figs" "ins" "pan" "tab" "exp";gap:18px;padding-top:20px;padding-bottom:40px}
-@media(min-width:900px){#rec{grid-template-areas:"file" "prog" "head" "figs" "chart" "ins" "pan" "tab" "exp"}}
-.exp{grid-area:exp;display:flex;flex-wrap:wrap;align-items:center;gap:8px 12px}
+#rec{display:flex;flex-direction:column;gap:18px;padding-top:20px;padding-bottom:40px}
+.exp{display:flex;flex-wrap:wrap;align-items:center;gap:8px 12px}
 .exp .mt{color:var(--mute);font-size:14px;flex:1 1 260px}
 .file{grid-area:file;display:flex;flex-wrap:wrap;align-items:center;gap:10px 16px}
 .pick{display:inline-flex;align-items:center;gap:9px;background:var(--ink);color:var(--bg);border:0;border-radius:12px;padding:0 18px;min-height:48px;font-weight:600;font-size:16px;cursor:pointer}
 .vh{position:fixed;left:0;top:0;width:1px;height:1px;opacity:0;pointer-events:none;overflow:hidden}
-.slow{grid-area:prog;border:1px solid var(--rule);border-radius:12px;padding:12px 14px;background:var(--plane);display:flex;flex-wrap:wrap;gap:10px 16px;align-items:center}
+.slow{border:1px solid var(--rule);border-radius:12px;padding:12px 14px;background:var(--plane);display:flex;flex-wrap:wrap;gap:10px 16px;align-items:center}
 .slow p{margin:0;flex:1 1 280px}
 .fmeta{flex:1 1 220px;display:flex;flex-direction:column;line-height:1.35}
 .fmeta b{font-weight:600}
@@ -79,14 +78,41 @@ h1{font:600 clamp(30px,5vw,40px)/1.05 var(--disp);letter-spacing:-.015em;margin:
 .chip{display:inline-flex;align-items:center;gap:6px;border:1px solid var(--rule);background:var(--bg);border-radius:99px;padding:0 14px;min-height:44px;font-size:15px;text-decoration:none;white-space:nowrap}
 .chip[aria-pressed=true]{border-color:var(--good);color:var(--good);background:color-mix(in srgb,var(--good) 9%,var(--bg))}
 .chip[aria-pressed=true]::before{content:"";width:8px;height:8px;border-radius:50%;background:var(--good)}
-.prog{grid-area:prog;display:flex;align-items:center;gap:12px;font-size:15px;color:var(--mute)}
+.prog{display:flex;align-items:center;gap:12px;font-size:15px;color:var(--mute)}
 .prog[hidden],.err[hidden]{display:none}
 .pb{flex:1;max-width:340px;height:6px;border-radius:3px;background:var(--rule);overflow:hidden}
 .pb i{display:block;height:100%;width:0;background:var(--ink);transition:width .15s}
-.err{grid-area:prog;border:1px solid var(--sharp);border-radius:12px;padding:12px 14px;background:color-mix(in srgb,var(--sharp) 8%,var(--bg))}
-.head{grid-area:head}
+.err{border:1px solid var(--sharp);border-radius:12px;padding:12px 14px;background:color-mix(in srgb,var(--sharp) 8%,var(--bg))}
+.head{display:grid;gap:8px}
+.hintline{margin:0;font-size:15px;color:var(--mute);max-width:70ch}
+.linkb{border:0;background:none;padding:0;color:var(--flat);font:inherit;text-decoration:underline;cursor:pointer}
+.seg.acc button{min-height:40px;font-size:14px}
+.coach{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,330px),1fr));gap:14px}
+.coach .kh{grid-column:1/-1;font:600 20px/1.2 var(--ui);margin:4px 0 0}
+.card{border:1px solid var(--rule);border-radius:14px;padding:14px 16px 16px;background:var(--bg);display:flex;flex-direction:column;gap:8px}
+.ct{display:flex;align-items:flex-start;gap:10px}
+.ct h4{margin:0;font:600 clamp(20px,2.6vw,23px)/1.2 var(--disp);letter-spacing:-.01em}
+.rank{flex:none;width:28px;height:28px;border-radius:50%;background:var(--ink);color:var(--bg);display:grid;place-items:center;font-weight:600;font-size:14px;margin-top:1px}
+.cd{margin:0;color:var(--ink)}
+.chips{display:flex;flex-wrap:wrap;gap:6px;align-items:center}
+.cl{font-size:14px;color:var(--mute);margin-right:2px}
+.chip.sm{min-height:38px;padding:0 11px;font-size:14px;font-variant-numeric:tabular-nums}
+.chip.sm svg{flex:none}
+.cw{margin:4px 0 0;font-size:14px;font-weight:600}
+.tipl{margin:0;padding-left:18px;display:grid;gap:4px}
+.cact{display:flex;flex-wrap:wrap;gap:8px;margin-top:4px}
+.cn,.nil{grid-column:1/-1;margin:0;font-size:14px;color:var(--mute)}
+.howto{margin:0;padding:10px 12px;border-top:1px solid var(--rule);font-size:14px;color:var(--mute)}
+.goodbox{border-left:3px solid var(--good);padding:2px 0 2px 14px}
+.goodbox h3{margin:0 0 4px;font:600 17px/1.3 var(--ui)}
+.goodbox ul{margin:0;padding-left:18px;display:grid;gap:3px}
+.more{border-top:1px solid var(--rule)}
+.more>summary{cursor:pointer;font-weight:600;padding:14px 0;min-height:44px;font-size:17px}
+.more[open]>summary{margin-bottom:8px}
+.more .figs,.more .ins,.more .pan{margin-bottom:22px}
+.tt{font:600 17px/1.3 var(--ui);margin:0 0 6px}
 .head h2{font:500 clamp(27px,4.2vw,42px)/1.08 var(--disp);letter-spacing:-.02em;margin:0;text-wrap:balance;max-width:26ch}
-.figs{grid-area:figs;display:grid;grid-template-columns:repeat(3,minmax(0,1fr));border-top:1.5px solid var(--ink)}
+.figs{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));border-top:1.5px solid var(--ink)}
 .f1{padding:10px 10px 12px 0;border-bottom:1px solid var(--rule)}
 .f1 em{display:block;font-style:normal;font-size:14px;font-weight:600}
 .f1 b{display:block;font:600 clamp(22px,3.2vw,30px)/1.15 var(--ui);font-variant-numeric:tabular-nums;white-space:nowrap;margin:2px 0}
@@ -112,10 +138,10 @@ h1{font:600 clamp(30px,5vw,40px)/1.05 var(--disp);letter-spacing:-.015em;margin:
 .legend{display:flex;flex-wrap:wrap;gap:6px 16px;font-size:14px;color:var(--mute);margin-left:auto}
 .legend i,.dot{display:inline-block;width:10px;height:10px;border-radius:3px;margin-right:6px;vertical-align:-1px}
 .bg-good{background:var(--good)}.bg-flat{background:var(--flat)}.bg-sharp{background:var(--sharp)}.bg-iv{background:color-mix(in srgb,var(--ink) 62%,transparent)}
-.ins{grid-area:ins;margin:0;padding:0;list-style:none;display:grid;gap:9px;max-width:78ch;font-size:17px}
+.ins{margin:0;padding:0;list-style:none;display:grid;gap:9px;max-width:78ch;font-size:17px}
 .ins li{padding-left:20px;position:relative}
 .ins li::before{content:"";position:absolute;left:3px;top:.6em;width:7px;height:7px;border-radius:50%;background:var(--ink)}
-.pan{grid-area:pan;display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,300px),1fr));gap:30px 36px;padding-top:6px;border-top:1px solid var(--rule)}
+.pan{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,300px),1fr));gap:30px 36px;padding-top:6px;border-top:1px solid var(--rule)}
 .pan h3{font:600 17px/1.3 var(--ui);margin:14px 0 2px}
 .pan .sub{font-size:14px;color:var(--mute);margin:0 0 12px}
 .dv{display:grid;grid-template-columns:3.9em 2.1em minmax(0,1fr) 3.9em;align-items:center;gap:8px;min-height:32px;font-size:15px}
@@ -131,8 +157,6 @@ h1{font:600 clamp(30px,5vw,40px)/1.05 var(--disp);letter-spacing:-.015em;margin:
 .hist .tz{position:absolute;bottom:0;top:0;background:color-mix(in srgb,var(--good) 10%,transparent);z-index:-1}
 .hist-w{position:relative;z-index:0}
 .hax{display:flex;justify-content:space-between;font-size:13px;color:var(--mute);margin-top:5px;font-variant-numeric:tabular-nums}
-.notes{grid-area:tab;border-top:1px solid var(--rule)}
-.notes summary{cursor:pointer;font-weight:600;padding:12px 0;min-height:44px}
 .scroll{overflow-x:auto}
 table{border-collapse:collapse;width:100%;font-size:15px}
 th,td{padding:8px 10px;border-bottom:1px solid var(--rule);text-align:right;white-space:nowrap;font-variant-numeric:tabular-nums}
@@ -155,7 +179,7 @@ tbody tr.on{background:color-mix(in srgb,var(--ink) 8%,transparent)}
 .face .good{color:#3ccf86}.face .flat{color:#72a8ff}.face .sharp{color:#ff9152}
 .face.idle .nn,.face.idle .rd b{opacity:.4}
 .meter{position:relative;height:62px}
-.trace{position:relative;height:clamp(190px,31vh,420px);border-top:1px solid var(--frule);border-bottom:1px solid var(--frule)}
+.trace{position:relative;height:clamp(180px,28vh,420px);border-top:1px solid var(--frule);border-bottom:1px solid var(--frule)}
 .lctl{display:flex;align-items:center;gap:12px 16px;flex-wrap:wrap}
 .recb{display:inline-flex;align-items:center;gap:11px;border:1px solid var(--frule);background:#212328;color:var(--fink);border-radius:99px;padding:0 22px 0 16px;min-height:54px;font-weight:600;font-size:17px}
 .recb i{width:18px;height:18px;border-radius:50%;background:var(--rec);transition:border-radius .2s}
@@ -166,9 +190,17 @@ tbody tr.on{background:color-mix(in srgb,var(--ink) 8%,transparent)}
 .lmsg{color:#c7c9ce;font-size:15px;margin:0;max-width:70ch}
 .lmsg:empty{display:none}
 .lmsg a{color:var(--fink)}
-.face.blocked .tun,.face.blocked .meter,.face.blocked .trace,.face.blocked .ltime,.face.blocked .lvl{display:none}
+.face.blocked .tun,.face.blocked .meter,.face.blocked .trace,.face.blocked .ltime,.face.blocked .lvl,.face.blocked .tgt{display:none}
 .face.blocked .lmsg{order:-1;font-size:17px;color:var(--fink);padding:8px 0 4px}
 .recb.alt{background:none}
+.tgt{display:flex;flex-wrap:wrap;align-items:center;gap:8px 12px;font-size:15px;color:#c7c9ce}
+.face select,.face .chip,.face .seg{background:#1d1f23;color:var(--fink);border-color:var(--frule)}
+.face .seg button+button{border-left-color:var(--frule)}
+.face .seg button[aria-pressed=true]{background:var(--fink);color:#111214}
+.face .chip[aria-pressed=true]{color:#3ccf86}
+.ib.dk{background:#1d1f23;color:var(--fink);border-color:var(--frule);display:grid;place-items:center}
+.tgt select{min-width:8.5em}
+.face.blocked .lctl .seg{display:none}
 .recb.alt i{display:none}
 .tips{padding-top:18px;color:var(--mute);font-size:15px;max-width:78ch}
 .tips p{margin:0 0 6px}
@@ -223,12 +255,13 @@ footer p{margin:0 0 4px;max-width:90ch}
     <div class="file">
       <button id="pickb" class="pick" type="button"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M12 15V4M7 9l5-5 5 5M5 20h14"/></svg>Ouvrir un enregistrement</button>
       <div class="fmeta"><b id="fname">—</b><span id="fsub"></span></div>
+      <div class="seg acc" data-k="acc" role="group" aria-label="Ce que capte le micro"><button data-v="0" type="button">Voix seule</button><button data-v="1" type="button">Avec accompagnement</button></div>
     </div>
     <div id="prog" class="prog" hidden><span id="ptxt">Analyse…</span><span class="pb"><i id="pbar"></i></span></div>
     <div id="slow" class="slow" hidden><p id="slowt"></p><button id="slowb" class="pick" type="button">Analyser en lisant le fichier</button></div>
     <div id="err" class="err" role="alert" hidden></div>
-    <div class="head"><h2 id="find">Analyse en cours…</h2></div>
-    <div id="figs" class="figs"></div>
+    <div class="head"><h2 id="find">Analyse en cours…</h2><p id="hint" class="hintline" hidden></p></div>
+    <section id="coach" class="coach" aria-label="À travailler"></section>
     <div class="chart">
       <div class="cbar">
         <button id="play" class="play" type="button" aria-label="Lire"></button>
@@ -238,15 +271,20 @@ footer p{margin:0 0 4px;max-width:90ch}
       <div class="roll" id="rollw"><canvas id="roll" role="img" aria-label="Courbe de hauteur de la voix et notes détectées"></canvas></div>
       <div class="mrow"><button class="ib" id="zout" type="button" aria-label="Dézoomer">−</button><div class="mini" id="miniw"><canvas id="mini" role="img" aria-label="Vue d'ensemble de l'enregistrement"></canvas></div><button class="ib" id="zin" type="button" aria-label="Zoomer">+</button><button class="ib w" id="zall" type="button">Tout</button></div>
       <div id="sel" class="sel"></div>
+      <p class="howto">Chaque pastille est une note tenue, placée à la hauteur réellement chantée ; le pointillé marque la note visée. Vert : juste. Bleu : trop bas. Orange : trop haut. Touche une pastille pour l'entendre avec la note juste.</p>
     </div>
-    <ul id="ins" class="ins"></ul>
-    <div class="pan">
-      <section><h3>Par note</h3><p class="sub">Écart moyen de chaque hauteur chantée</p><div id="bynote"></div></section>
-      <section><h3>Répartition des écarts</h3><p class="sub">Nombre de notes par tranche de 5 c</p><div id="hist"></div></section>
-      <section><h3>Intervalles</h3><p class="sub">Secondes = demi-ton ou ton, sauts = tierce et plus&#8239;; à gauche trop serrés, à droite trop larges</p><div id="intv"></div></section>
-    </div>
-    <details class="notes"><summary id="nsum">Toutes les notes</summary><div class="scroll"><table id="ntab"></table></div></details>
-    <div class="exp"><button id="copy" class="chip" type="button">Copier le bilan</button><a id="dl" class="chip" hidden>Télécharger la prise (.wav)</a><span class="mt">Le bilan copié (chiffres, constats, liste des notes) se colle dans un message ou un document.</span></div>
+    <section id="good" class="goodbox" aria-label="Ce qui va bien" hidden></section>
+    <details id="more" class="more"><summary>Les chiffres en détail</summary>
+      <div id="figs" class="figs"></div>
+      <ul id="ins" class="ins"></ul>
+      <div class="pan">
+        <section><h3>Par note</h3><p class="sub">Écart moyen de chaque hauteur chantée</p><div id="bynote"></div></section>
+        <section><h3>Répartition des écarts</h3><p class="sub">Nombre de notes par tranche de 5 c</p><div id="hist"></div></section>
+        <section><h3>Intervalles</h3><p class="sub">Secondes = demi-ton ou ton, sauts = tierce et plus&#8239;; à gauche trop serrés, à droite trop larges</p><div id="intv"></div></section>
+      </div>
+      <h3 class="tt" id="nsum">Toutes les notes</h3><div class="scroll"><table id="ntab"></table></div>
+    </details>
+    <div class="exp"><button id="copy" class="chip" type="button">Copier le bilan</button><a id="dl" class="chip" hidden>Télécharger la prise (.wav)</a><span class="mt">Le bilan copié (points à travailler, chiffres, liste des notes) se colle dans un message ou un document.</span></div>
   </section>
 
   <section id="live" role="tabpanel" aria-labelledby="t-live" hidden>
@@ -256,22 +294,23 @@ footer p{margin:0 0 4px;max-width:90ch}
           <div class="nn" aria-live="off"><span id="ln">—</span><sub id="lo"></sub></div>
           <div class="rd"><b id="lc">—</b><em id="lw">Chante une note tenue</em><span id="lf">— Hz</span></div>
         </div>
+        <div class="tgt" id="tgt"><label for="tsel">Note visée</label><select id="tsel"></select><button id="tplay" class="ib dk" type="button" aria-label="Écouter la note visée"><svg width="14" height="16" viewBox="0 0 11 12" aria-hidden="true"><path d="M1 1v10l9-5z" fill="currentColor"/></svg></button></div>
         <div class="meter"><canvas id="meter" role="img" aria-label="Aiguille : écart en cents"></canvas></div>
         <div class="trace"><canvas id="trace" role="img" aria-label="Tracé de la voix en direct"></canvas></div>
-        <div class="lctl"><button id="recb" class="recb" type="button" aria-pressed="false"><i></i><span>Démarrer</span></button><button id="pick2" class="recb alt" type="button" hidden><i></i><span>Ouvrir un enregistrement</span></button><span id="ltime" class="ltime">0:00</span><span class="lvl" aria-hidden="true"><i id="lvl"></i></span></div>
+        <div class="lctl"><button id="recb" class="recb" type="button" aria-pressed="false"><i></i><span>Démarrer</span></button><button id="pick2" class="recb alt" type="button" hidden><i></i><span>Ouvrir un enregistrement</span></button><span id="ltime" class="ltime">0:00</span><span class="lvl" aria-hidden="true"><i id="lvl"></i></span><div class="seg acc" data-k="acc" role="group" aria-label="Ce que capte le micro"><button data-v="0" type="button">Voix seule</button><button data-v="1" type="button">Avec accompagnement</button></div></div>
         <p id="lmsg" class="lmsg"></p>
       </div>
     </div>
     <div class="wrap tips">
-      <p>Chante à 30–50 cm du micro, sans accompagnement, sur des notes tenues.</p>
+      <p>Chante à 30–50 cm du micro, sur des notes tenues. Avec un instrument ou une musique, choisis «&#8239;Avec accompagnement&#8239;» ; au casque, c'est encore plus précis.</p>
       <p class="t2">L'aiguille montre l'écart à la note la plus proche ; le tracé garde les dernières secondes. À l'arrêt, la prise est analysée note par note dans l'onglet Enregistrement.</p>
     </div>
   </section>
 </main>
 
 <footer><div class="wrap">
-  <p>Détection de hauteur par l'algorithme YIN (de Cheveigné et Kawahara, 2002), à ±1 c sur un son tenu. Tout est calculé sur ton appareil : aucun son n'est envoyé.</p>
-  <p>Marche au mieux sur une voix seule ; un accompagnement fort ou beaucoup de réverbération peuvent fausser quelques notes.</p>
+  <p>Voix seule : algorithme YIN (de Cheveigné et Kawahara, 2002), précis à ±1 c sur un son tenu. Avec accompagnement : somme des harmoniques, puis suivi des sons dont toutes les harmoniques bougent ensemble, comme une voix. Tout est calculé sur ton appareil : aucun son n'est envoyé.</p>
+  <p>Avec un instrument ou une musique, quelques notes peuvent être confondues avec l'accompagnement ; au casque, le micro n'entend que ta voix.</p>
 </div></footer>
 
 <div id="sw" hidden><i data-c="ink" style="color:var(--ink)"></i><i data-c="mute" style="color:var(--mute)"></i><i data-c="rule" style="color:var(--rule)"></i><i data-c="row" style="color:var(--row)"></i><i data-c="bg" style="color:var(--bg)"></i><i data-c="good" style="color:var(--good)"></i><i data-c="flat" style="color:var(--flat)"></i><i data-c="sharp" style="color:var(--sharp)"></i></div>
@@ -331,10 +370,10 @@ const DSP = (() => {
 
   /* ---------- Préparation : passe-haut 45 Hz, passe-bas 4 kHz (Butterworth 4), décimation vers ~24 kHz ---------- */
   class Prep {
-    constructor(sr) {
-      this.factor = Math.max(1, Math.round(sr / 24000));
+    constructor(sr, target, fcMax) {
+      this.factor = Math.max(1, Math.round(sr / (target || 24000)));
       this.fs = sr / this.factor;
-      const fc = Math.min(4000, 0.42 * this.fs);
+      const fc = Math.min(fcMax || 4000, 0.42 * this.fs);
       this.f = [new Biquad('hp', 45, Math.SQRT1_2, sr), new Biquad('lp', fc, 0.5412, sr), new Biquad('lp', fc, 1.3066, sr)];
       this.ph = 0; this.t = new Float64Array(8192);
     }
@@ -443,11 +482,12 @@ const DSP = (() => {
     }
     const sorted = Float32Array.from(rms).sort();
     const thr = Math.max(sorted[Math.floor(0.99 * (n - 1))] * 0.0178, 1e-4); // −35 dB sous le niveau de crête
+    let loud = 0, mid = 0;
     for (let i = 0; i < n; i++) {
-      if (rms[i] >= thr) { f0[i] = yin.frame(sig, Math.round(i * hop - M / 2)); ap[i] = yin.ap; }
+      if (rms[i] >= thr) { f0[i] = yin.frame(sig, Math.round(i * hop - M / 2)); ap[i] = yin.ap; if (rms[i] >= 4 * thr) { loud++; if (ap[i] > 0.25 && ap[i] < 0.7) mid++; } }
       if (progress && (i & 511) === 511) { progress(i / n); await tick(); }
     }
-    return { f0, ap, rms, env, thr, n };
+    return { f0, ap, rms, env, thr, n, mixed: loud ? mid / loud : 0 };
   }
 
   /* ---------- Nettoyage : voisement, erreurs d'octave, médiane 3 ---------- */
@@ -629,11 +669,23 @@ const DSP = (() => {
     });
   }
 
+  // attaque : si la phonation commence moins de 250 ms avant la note, écart (c) de ses premières trames au centre
+  function attackOf(p, i0, mu) {
+    let j = i0, gaps = 0;
+    while (j - 1 >= 0 && i0 - (j - 1) <= 25) { if (p[j - 1] === p[j - 1]) { j--; gaps = 0; } else if (gaps < 2) { j--; gaps++; } else break; }
+    while (j < i0 && !(p[j] === p[j])) j++;
+    if (i0 - j >= 24 && j > 0 && p[j - 1] === p[j - 1]) return 0;
+    let s = 0, c = 0; for (let k = j; k < i0 + 8 && c < 4; k++) if (p[k] === p[k]) { s += p[k]; c++; }
+    return c ? (s / c - mu) * 100 : 0;
+  }
+  const finish = (p, tr, dur, extra) => {
+    const notes = dropArtifacts(segment(p).flatMap(ix => splitEnergy(ix, tr.env)).map(ix => noteStats(ix, p)));
+    for (const n of notes) n.att = attackOf(p, n.i0, n.mu);
+    return Object.assign({ p, notes, dur, mixed: tr.mixed || 0 }, extra);
+  };
   async function analyze(samples, sr, range, progress) {
     const tr = await track(samples, sr, range, progress);
-    const p = clean(tr);
-    const notes = dropArtifacts(segment(p).flatMap(ix => splitEnergy(ix, tr.env)).map(ix => noteStats(ix, p)));
-    return { p, notes, dur: samples.length / sr };
+    return finish(clean(tr), tr, samples.length / sr, {});
   }
 
   /* ---------- Bilan selon les réglages (diapason, référence, gamme, tolérance) ---------- */
@@ -684,9 +736,9 @@ const DSP = (() => {
       if (b.t0 - a.t1 > 0.6) continue;
       const I = b.target - a.target; if (!I) continue;
       const e = ((b.m - a.m) - I) * 100 * Math.sign(I);
-      (I > 0 ? (I <= 2 ? iv.up1 : iv.upL) : (I >= -2 ? iv.dn1 : iv.dnL)).push(e);
+      (I > 0 ? (I <= 2 ? iv.up1 : iv.upL) : (I >= -2 ? iv.dn1 : iv.dnL)).push({ e, i: k });
     }
-    const intervals = Object.fromEntries(Object.entries(iv).map(([k, v]) => [k, { n: v.length, mean: mean(v) }]));
+    const intervals = Object.fromEntries(Object.entries(iv).map(([k, v]) => [k, { n: v.length, mean: mean(v.map(q => q.e)), idx: v.map(q => q.i) }]));
     // registre : tiers grave contre tiers aigu
     let register = null;
     if (N >= 6) {
@@ -734,6 +786,292 @@ const DSP = (() => {
       }
       return out;
     }
+  }
+
+  /* ---------- Mode « avec accompagnement » ----------
+     Pics spectraux → fonction de saillance (somme des harmoniques, bins de 10 c) → contours de hauteur →
+     contours « voix » (micro-variations, vibrato, pas de décroissance d'une note de piano) → affinage par les harmoniques. */
+  const SB = 600, SLO = 33, PK = 32, HM = 12;
+  const COS2 = new Float64Array(201); for (let i = 0; i <= 200; i++) { const d = (i - 100) / 100; COS2[i] = Math.cos(d * Math.PI / 2) ** 2; }
+  class Spec {
+    constructor(fs) {
+      this.fs = fs; let N = 256; while (N < 0.06 * fs) N <<= 1;
+      this.N = N; this.NF = 2 * N; this.fft = new FFT(this.NF);
+      this.win = new Float64Array(N); for (let i = 0; i < N; i++) this.win[i] = 0.5 - 0.5 * Math.cos(2 * Math.PI * i / (N - 1));
+      this.re = new Float64Array(this.NF); this.im = new Float64Array(this.NF); this.db = new Float64Array(this.NF / 2 + 1);
+      this.bw = fs / this.NF; this.kmin = Math.max(2, Math.ceil(60 / this.bw)); this.kmax = Math.min(this.NF / 2 - 2, Math.floor(5000 / this.bw));
+      this.sal = new Float64Array(SB);
+    }
+    // renvoie { f: fréquences des pics (Hz), a: amplitudes linéaires, c: candidats [{m, s}] }
+    frame(x, off) {
+      const { N, NF, win, re, im, db, kmin, kmax, sal } = this, L = x.length;
+      for (let i = 0; i < N; i++) { const j = off + i; re[i] = (j >= 0 && j < L ? x[j] : 0) * win[i]; im[i] = 0; }
+      for (let i = N; i < NF; i++) { re[i] = 0; im[i] = 0; }
+      this.fft.run(re, im, false);
+      let mx = -300;
+      for (let k = kmin - 1; k <= kmax + 1; k++) { db[k] = 10 * Math.log10(re[k] * re[k] + im[k] * im[k] + 1e-24); if (k >= kmin && k <= kmax && db[k] > mx) mx = db[k]; }
+      const pf = [], pa = [];
+      for (let k = kmin; k <= kmax; k++) {
+        const v = db[k]; if (v < mx - 50 || v <= db[k - 1] || v < db[k + 1]) continue;
+        const a = db[k - 1], c = db[k + 1], d = a - 2 * v + c, p = d < 0 ? Math.max(-0.5, Math.min(0.5, 0.5 * (a - c) / d)) : 0;
+        pf.push((k + p) * this.bw); pa.push(v - 0.25 * (a - c) * p);
+      }
+      // garder les PK pics les plus forts
+      let idx = pf.map((_, i) => i);
+      if (idx.length > PK) idx = idx.sort((i, j) => pa[j] - pa[i]).slice(0, PK);
+      const f = new Float32Array(idx.length), am = new Float32Array(idx.length);
+      idx.forEach((i, k) => { f[k] = pf[i]; am[k] = Math.pow(10, pa[i] / 20); });
+      // saillance : chaque pic vote pour f/h (h = 1..HM), poids 0,8^(h−1), étalé sur ±1 demi-ton (cos²)
+      sal.fill(0);
+      const thr = Math.pow(10, (mx - 40) / 20);
+      for (let i = 0; i < f.length; i++) {
+        if (am[i] < thr) continue;
+        const a = Math.sqrt(am[i]);
+        for (let h = 1, w = 1; h <= HM; h++, w *= 0.8) {
+          const b = 120 * Math.log2(f[i] / h / 55);
+          if (b < -10) break; if (b > SB + 10) continue;
+          const j0 = Math.max(0, Math.ceil(b - 10)), j1 = Math.min(SB - 1, Math.floor(b + 10)), wa = w * a;
+          for (let j = j0; j <= j1; j++) sal[j] += wa * COS2[Math.round((j - b) * 10) + 100];
+        }
+      }
+      let smax = 0; for (let j = 0; j < SB; j++) if (sal[j] > smax) smax = sal[j];
+      const c = [];
+      if (smax > 0) for (let j = 1; j < SB - 1; j++) {
+        const s = sal[j];
+        if (s >= 0.1 * smax && s > sal[j - 1] && s >= sal[j + 1]) {
+          const a = sal[j - 1], b2 = sal[j + 1], d = a - 2 * s + b2, p = d < 0 ? 0.5 * (a - b2) / d : 0;
+          c.push({ m: SLO + (j + p) / 10, s: s - 0.25 * (a - b2) * p });
+        }
+      }
+      c.sort((u, v) => v.s - u.s);
+      return { f, a: am, c: c.slice(0, 10) };
+    }
+  }
+  // harmoniques proches de h·f0 : hauteur précise (médiane pondérée puis moyenne des points cohérents),
+  // et, pour chaque harmonique, la hauteur fondamentale qu'elle indique (cents) et son amplitude
+  const RH = 12;
+  function refine(fr, f0, C, A) {
+    const e = [];
+    for (let h = 1; h <= RH; h++) {
+      const t = h * f0; let best = -1, bd = 50;
+      for (let i = 0; i < fr.f.length; i++) { const d = Math.abs(1200 * Math.log2(fr.f[i] / t)); if (d < bd) { bd = d; best = i; } }
+      if (C) { C[h - 1] = best >= 0 ? 1200 * Math.log2(fr.f[best] / h / 440) : NaN; A[h - 1] = best >= 0 ? fr.a[best] : 0; }
+      if (best >= 0) e.push({ c: 1200 * Math.log2(fr.f[best] / h / f0), w: fr.a[best] });
+    }
+    if (!e.length) { refine.e = 0; return f0; }
+    e.sort((u, v) => u.c - v.c);
+    let W = 0; for (const q of e) W += q.w;
+    let acc = 0, med = e[0].c; for (const q of e) { acc += q.w; if (acc >= W / 2) { med = q.c; break; } }
+    let sw = 0, sc = 0; for (const q of e) if (Math.abs(q.c - med) <= 12) { sw += q.w; sc += q.w * q.c; }
+    refine.e = sw;
+    return f0 * Math.pow(2, (sw ? sc / sw : med) / 1200);
+  }
+  // Une voix module toutes ses harmoniques ensemble (micro-variations, vibrato) ; une note de piano reste fixe,
+  // et le « fantôme » d'une voix à l'octave n'a que la moitié de ses harmoniques qui bougent avec elle.
+  // Tout est jugé localement (fenêtre de ±120 ms le long du contour), car un contour peut passer d'une source à l'autre.
+  const LW = 12;
+  function detrend(v, H) {
+    const n = v.length, out = new Float64Array(n).fill(NaN), S = new Float64Array(n + 1), N = new Float64Array(n + 1);
+    for (let j = 0; j < n; j++) { const ok = v[j] === v[j]; S[j + 1] = S[j] + (ok ? v[j] : 0); N[j + 1] = N[j] + (ok ? 1 : 0); }
+    for (let j = 0; j < n; j++) if (v[j] === v[j]) { const a = Math.max(0, j - H), b = Math.min(n, j + H + 1), c = N[b] - N[a]; out[j] = v[j] - (S[b] - S[a]) / c; }
+    return out;
+  }
+  function localFeatures(k) {
+    const n = k.f.length, r = k.f.map(f => 1200 * Math.log2(f / 440)), dr = detrend(r, LW);
+    const win = (x, y) => { // sommes glissantes sur ±LW des produits, pour les paires valides
+      const P = [new Float64Array(n + 1), new Float64Array(n + 1), new Float64Array(n + 1), new Float64Array(n + 1)];
+      for (let j = 0; j < n; j++) { const ok = x[j] === x[j] && y[j] === y[j]; P[0][j + 1] = P[0][j] + (ok ? x[j] * y[j] : 0); P[1][j + 1] = P[1][j] + (ok ? x[j] * x[j] : 0); P[2][j + 1] = P[2][j] + (ok ? y[j] * y[j] : 0); P[3][j + 1] = P[3][j] + (ok ? 1 : 0); }
+      return j => { const a = Math.max(0, j - LW), b = Math.min(n, j + LW + 1); return [P[0][b] - P[0][a], P[1][b] - P[1][a], P[2][b] - P[2][a], P[3][b] - P[3][a]]; };
+    };
+    const jr = win(dr, dr), coh = [];
+    for (let h = 0; h < RH; h++) {
+      const ch = new Float64Array(n); for (let j = 0; j < n; j++) ch[j] = k.C[j][h];
+      coh.push(win(detrend(ch, LW), dr));
+    }
+    k.v = []; k.ce = []; k.odd = []; k.n3 = []; let jsum = 0;
+    for (let j = 0; j < n; j++) {
+      const [, , yy, cn] = jr(j), jit = cn ? Math.sqrt(yy / cn) : 0; jsum += jit;
+      let s = 0, o = 0, t = 0, nc = 0;
+      if (jit >= 2.5) for (let h = 0; h < RH; h++) {
+        const [xy, xx, yy2, m] = coh[h](j);
+        if (m >= 8 && xx > 0 && yy2 > 0) {
+          const c = xy / Math.sqrt(xx * yy2), q = Math.sqrt(xx / yy2);
+          if (c >= 0.4 && q >= 0.35 && q <= 3) { const a = k.A[j][h]; nc++; s += a; if ((h + 1) % 2) o += a; if ((h + 1) % 3) t += a; }
+        }
+      }
+      k.v.push(nc >= 3); k.ce.push(s); k.odd.push(s ? o / s : 0); k.n3.push(s ? t / s : 0);
+    }
+    k.jit = jsum / Math.max(1, n); k.ncoh = k.v.filter(Boolean).length;
+  }
+
+  async function trackPoly(samples, sr, range, progress) {
+    const [fmin, fmax] = RANGES[range] || RANGES.all;
+    const prep = new Prep(sr, 16000, 6000), x = new Float32Array(Math.ceil(samples.length / prep.factor) + 2);
+    let w = 0;
+    for (let i = 0; i < samples.length; i += 32768) w += prep.push(samples.subarray(i, Math.min(samples.length, i + 32768)), x, w);
+    const sig = x.subarray(0, w), fs = prep.fs, sp = new Spec(fs), hop = fs * HOP, n = Math.max(1, Math.floor(w / hop) + 1);
+    const rms = new Float32Array(n), env = new Float32Array(n), frames = new Array(n), hw = Math.round(0.01 * fs);
+    for (let i = 0; i < n; i++) {
+      const c = Math.round(i * hop);
+      let e = 0, g = 0;
+      for (let j = Math.max(0, c - (sp.N >> 1)); j < Math.min(w, c + (sp.N >> 1)); j++) { e += sig[j] * sig[j]; if (j >= c - hw && j < c + hw) g += sig[j] * sig[j]; }
+      rms[i] = Math.sqrt(e / sp.N); env[i] = Math.sqrt(g / (2 * hw));
+    }
+    const sorted = Float32Array.from(rms).sort(), thr = Math.max(sorted[Math.floor(0.99 * (n - 1))] * 0.0178, 1e-4);
+    for (let i = 0; i < n; i++) {
+      frames[i] = rms[i] >= thr ? sp.frame(sig, Math.round(i * hop) - (sp.N >> 1)) : null;
+      if (progress && (i & 255) === 255) { progress(0.9 * i / n); await tick(); }
+    }
+    // contours : suivi des candidats d'une trame à l'autre (écart ≤ 0,8 demi-ton, trous ≤ 100 ms)
+    const act = [], all = [];
+    for (let i = 0; i < n; i++) {
+      const fr = frames[i];
+      if (fr) for (const c of fr.c) {
+        if (c.m < 69 + 12 * Math.log2(fmin / 440) || c.m > 69 + 12 * Math.log2(fmax / 440)) continue;
+        let best = null, bd = 0.8;
+        for (const k of act) { if (k.lastI === i) continue; const d = Math.abs(k.m[k.m.length - 1] - c.m); if (d < bd) { bd = d; best = k; } }
+        if (best) { best.i.push(i); best.m.push(c.m); best.s.push(c.s); best.lastI = i; }
+        else act.push({ i: [i], m: [c.m], s: [c.s], lastI: i });
+      }
+      for (let j = act.length - 1; j >= 0; j--) if (i - act[j].lastI > 10) { all.push(act[j]); act.splice(j, 1); }
+    }
+    all.push(...act);
+    const long = all.filter(k => k.i.length >= 10);
+    for (const k of long) {
+      k.f = []; k.C = []; k.A = [];
+      for (let j = 0; j < k.i.length; j++) { const C = new Float32Array(RH), A = new Float32Array(RH); k.f.push(refine(frames[k.i[j]], 440 * Math.pow(2, (k.m[j] - 69) / 12), C, A)); k.C.push(C); k.A.push(A); }
+      localFeatures(k);
+    }
+    const voice = long;
+    // par trame : contour voix dont les harmoniques cohérentes portent le plus d'énergie, puis correction des
+    // fantômes : à l'octave (ou la douzième) en dessous, un contour sans énergie cohérente sur ses harmoniques
+    // impaires (ou non multiples de 3) n'est que l'écho de la voix au-dessus
+    const at = Array.from({ length: n }, () => []);
+    for (const k of voice) for (let j = 0; j < k.i.length; j++) if (k.v[j]) at[k.i[j]].push({ f: k.f[j], s: k.ce[j], odd: k.odd[j], n3: k.n3[j], m: 69 + 12 * Math.log2(k.f[j] / 440) });
+    const pick = new Array(n).fill(null);
+    for (let i = 0; i < n; i++) {
+      const cs = at[i]; if (!cs.length) continue;
+      cs.sort((u, v) => v.s - u.s);
+      let x = cs[0];
+      for (let step = 0; step < 3; step++) {
+        const up = cs.find(c => Math.abs(c.m - x.m - 12) < 0.8), up3 = cs.find(c => Math.abs(c.m - x.m - 19.02) < 0.8);
+        if (up && x.odd < 0.15) { x = up; continue; }
+        if (up3 && x.n3 < 0.15) { x = up3; continue; }
+        const dn = cs.find(c => Math.abs(x.m - c.m - 12) < 0.8 && c.odd >= 0.25 && c.s >= 0.5 * x.s);
+        if (dn) { x = dn; continue; }
+        break;
+      }
+      pick[i] = x;
+    }
+    // registre : un choix à plus d'une octave de la hauteur médiane de la voix est remplacé par un candidat
+    // plus proche quand il en existe un (souvent une basse ou un accord de l'accompagnement)
+    // (médiane locale sur ±2 s, par histogramme de demi-tons glissant)
+    {
+      const R = 200, hist = new Int32Array(128); let tot = 0;
+      const add = (i, d) => { const x = pick[i]; if (x) { hist[Math.max(0, Math.min(127, Math.round(x.m)))] += d; tot += d; } };
+      for (let i = 0; i < Math.min(n, R); i++) add(i, 1);
+      const med = new Float32Array(n).fill(NaN);
+      for (let i = 0; i < n; i++) {
+        if (i + R < n) add(i + R, 1);
+        if (i - R - 1 >= 0) add(i - R - 1, -1);
+        if (tot) { let c = 0, k = 0; while (k < 127 && c + hist[k] <= tot / 2) { c += hist[k]; k++; } med[i] = k; }
+      }
+      for (let i = 0; i < n; i++) {
+        const x = pick[i]; if (!x || !(med[i] === med[i]) || Math.abs(x.m - med[i]) <= 12.5) continue;
+        pick[i] = at[i].filter(c => Math.abs(c.m - med[i]) <= 12.5).sort((u, v) => v.s - u.s)[0] || null;
+      }
+    }
+    // séquences brèves (< 150 ms) qui sautent d'au moins 4 demi-tons par rapport à leurs deux voisines
+    const runs = []; let cur = null;
+    for (let i = 0; i < n; i++) {
+      const x = pick[i]; if (!x) continue;
+      if (cur && i - cur.b <= 3 && Math.abs(x.m - cur.m) < 1) { cur.b = i; cur.m = x.m; cur.n++; }
+      else { cur = { a: i, b: i, m: x.m, m0: x.m, n: 1 }; runs.push(cur); }
+    }
+    for (let r = 0; r < runs.length; r++) {
+      const R = runs[r]; if (R.b - R.a >= 15) continue;
+      const P = runs[r - 1], N2 = runs[r + 1], mm = (R.m0 + R.m) / 2;
+      const nb = [P && R.a - P.b <= 30 ? P.m : null, N2 && N2.a - R.b <= 30 ? N2.m0 : null].filter(v => v !== null);
+      if (!nb.length || !nb.every(v => Math.abs(v - mm) >= 4)) continue;
+      for (let i = R.a; i <= R.b; i++) {
+        if (!pick[i]) continue;
+        const alt = at[i].filter(c => nb.some(v => Math.abs(c.m - v) <= 1.5)).sort((u, v) => v.s - u.s)[0];
+        pick[i] = alt || null;
+      }
+    }
+    const f0 = new Float32Array(n), ap = new Float32Array(n).fill(1);
+    for (let i = 0; i < n; i++) if (pick[i]) { f0[i] = pick[i].f; ap[i] = 0.1; }
+    if (progress) progress(1);
+    return { f0, ap, rms, env, thr, n };
+  }
+  // version en direct (causale) : mêmes critères, jugés sur les 250 dernières ms de chaque contour
+  class LivePoly {
+    constructor(sr, range) {
+      const [fmin, fmax] = RANGES[range] || RANGES.all;
+      this.mlo = 69 + 12 * Math.log2(fmin / 440); this.mhi = 69 + 12 * Math.log2(fmax / 440);
+      this.prep = new Prep(sr, 16000, 6000); this.fs = this.prep.fs; this.sp = new Spec(this.fs);
+      this.M = this.sp.N; this.hop = this.fs * HOP;
+      this.buf = new Float32Array(this.M + 8192); this.n = 0; this.start = 0; this.next = this.M;
+      this.tmp = new Float32Array(16384); this.ks = []; this.fi = 0;
+    }
+    push(chunk) {
+      if (this.tmp.length < chunk.length) this.tmp = new Float32Array(chunk.length);
+      const k = this.prep.push(chunk, this.tmp, 0), out = [];
+      if (this.n + k > this.buf.length) { const keep = this.M; this.buf.copyWithin(0, this.n - keep, this.n); this.start += this.n - keep; this.n = keep; }
+      this.buf.set(this.tmp.subarray(0, k), this.n); this.n += k;
+      while (this.next <= this.start + this.n) {
+        const end = Math.round(this.next), off = end - this.M - this.start;
+        let e = 0; for (let j = off; j < off + this.M; j++) e += this.buf[j] * this.buf[j];
+        const o = this.frame(off); o.t = (end - this.M / 2) / this.fs; o.rms = Math.sqrt(e / this.M);
+        out.push(o); this.next += this.hop;
+      }
+      return out;
+    }
+    frame(off) {
+      const fr = this.sp.frame(this.buf, off), i = this.fi++;
+      for (const c of fr.c) {
+        if (c.m < this.mlo || c.m > this.mhi) continue;
+        let best = null, bd = 0.8;
+        for (const k of this.ks) { if (k.last === i) continue; const d = Math.abs(k.lm - c.m); if (d < bd) { bd = d; best = k; } }
+        const C = new Float32Array(RH), A = new Float32Array(RH), f = refine(fr, 440 * Math.pow(2, (c.m - 69) / 12), C, A);
+        const pt = { f, C, A };
+        if (best) { best.p.push(pt); if (best.p.length > 2 * LW + 1) best.p.shift(); best.lm = c.m; best.last = i; }
+        else this.ks.push({ p: [pt], lm: c.m, last: i });
+      }
+      this.ks = this.ks.filter(k => i - k.last <= 10);
+      const cs = [];
+      for (const k of this.ks) {
+        if (k.last !== i || k.p.length < 10) continue;
+        const P = k.p, n = P.length, r = P.map(q => 1200 * Math.log2(q.f / 440)), mr = r.reduce((s, v) => s + v, 0) / n;
+        let yy = 0; for (const v of r) yy += (v - mr) ** 2;
+        const jit = Math.sqrt(yy / n); if (jit < 2.5) continue;
+        let s = 0, od = 0, t3 = 0, nc = 0; const L = P[n - 1];
+        for (let h = 0; h < RH; h++) {
+          let sx = 0, m = 0; for (const q of P) { const v = q.C[h]; if (v === v) { sx += v; m++; } }
+          if (m < 8) continue;
+          const mx = sx / m; let xy = 0, xx = 0, y2 = 0;
+          for (let j = 0; j < n; j++) { const v = P[j].C[h]; if (!(v === v)) continue; const x = v - mx, y = r[j] - mr; xy += x * y; xx += x * x; y2 += y * y; }
+          if (xx > 0 && y2 > 0) { const c = xy / Math.sqrt(xx * y2), q = Math.sqrt(xx / y2); if (c >= 0.4 && q >= 0.35 && q <= 3) { nc++; s += L.A[h]; if ((h + 1) % 2) od += L.A[h]; if ((h + 1) % 3) t3 += L.A[h]; } }
+        }
+        if (nc >= 3 && s > 0) cs.push({ f: L.f, m: 69 + 12 * Math.log2(L.f / 440), s, odd: od / s, n3: t3 / s });
+      }
+      if (!cs.length) return { f: 0, ap: 1 };
+      cs.sort((u, v) => v.s - u.s);
+      let x = cs[0];
+      for (let step = 0; step < 3; step++) {
+        const up = cs.find(c => Math.abs(c.m - x.m - 12) < 0.8), up3 = cs.find(c => Math.abs(c.m - x.m - 19.02) < 0.8);
+        if (up && x.odd < 0.15) { x = up; continue; }
+        if (up3 && x.n3 < 0.15) { x = up3; continue; }
+        const dn = cs.find(c => Math.abs(x.m - c.m - 12) < 0.8 && c.odd >= 0.25 && c.s >= 0.5 * x.s);
+        if (dn) { x = dn; continue; }
+        break;
+      }
+      return { f: x.f, ap: 0.1 };
+    }
+  }
+  async function analyzePoly(samples, sr, range, progress) {
+    const tr = await trackPoly(samples, sr, range, progress);
+    return finish(clean(tr), tr, samples.length / sr, { poly: true });
   }
 
   /* ---------- Exemple : « Au clair de la lune », voix de synthèse avec écarts connus ---------- */
@@ -794,7 +1132,7 @@ const DSP = (() => {
     return { samples: out, sr: fs, truth: ev.map(E => ({ t0: E.t0, t1: E.t1, midi: E.midi, dev: E.dev })) };
   }
 
-  return { HOP, RANGES, SCALES, FFT, Biquad, Prep, Yin, track, clean, segment, noteStats, analyze, summarize, target, Live, demo };
+  return { HOP, RANGES, SCALES, FFT, Biquad, Prep, Yin, Spec, track, trackPoly, clean, segment, noteStats, analyze, analyzePoly, summarize, target, Live, LivePoly, demo };
 })();
 if (typeof module !== 'undefined') module.exports = DSP;
 </script>
@@ -816,7 +1154,7 @@ const UI = '"Instrument Sans","Noto Music",system-ui,-apple-system,"Segoe UI",Ro
 const FC = { ink: '#f3f2ee', mute: '#8f939a', rule: '#2c2e34', row: 'rgba(255,255,255,0.04)', good: '#3ccf86', flat: '#72a8ff', sharp: '#ff9152' };
 
 /* ---------- réglages ---------- */
-const DEF = { a4: 440, nota: 'fr', mode: 'abs', scale: 'chrom', tonic: 0, tol: 15, range: 'all', ref: true };
+const DEF = { a4: 440, nota: 'fr', mode: 'abs', scale: 'chrom', tonic: 0, tol: 15, range: 'all', ref: true, acc: 0 };
 const S = Object.assign({}, DEF);
 try { const s = JSON.parse(localStorage.getItem('diapason-reglages') || '{}'); for (const k in DEF) if (k in s && typeof s[k] === typeof DEF[k]) S[k] = s[k]; } catch (e) {}
 const save = () => { try { localStorage.setItem('diapason-reglages', JSON.stringify(S)); } catch (e) {} };
@@ -867,9 +1205,9 @@ const setP = p => { $('#pbar').style.width = Math.round(p * 100) + '%'; };
 const showErr = msg => { const e = $('#err'); e.hidden = !msg; e.textContent = msg || ''; };
 
 async function load(x, sr, name, kind) {
-  stopPlay(); showErr(''); prog(true, 'Analyse de la hauteur…'); setP(0);
+  stopPlay(); showErr(''); prog(true, S.acc ? 'Recherche de ta voix dans l\'accompagnement…' : 'Analyse de la hauteur…'); setP(0);
   let res;
-  try { res = await DSP.analyze(x, sr, S.range, setP); } catch (e) { prog(false); showErr("L'analyse a échoué : " + (e && e.message || e)); return; }
+  try { res = await (S.acc ? DSP.analyzePoly : DSP.analyze)(x, sr, S.range, setP); } catch (e) { prog(false); showErr("L'analyse a échoué : " + (e && e.message || e)); return; }
   prog(false);
   TAKE = { x, sr, name, kind, dur: x.length / sr, res, peak: x.reduce((m, v) => Math.max(m, Math.abs(v)), 0) };
   P.cursor = 0; SEL = -1;
@@ -988,22 +1326,107 @@ function recompute() {
   renderAll();
 }
 
-/* ---------- textes ---------- */
-function clause(s) {
+/* ---------- textes : verdict, points à travailler, ce qui va bien ---------- */
+let COACH = [];
+const frac = c => { const a = Math.abs(c); return a < 20 ? 'un léger écart' : a < 30 ? 'environ un quart de demi-ton' : a < 42 ? 'environ un tiers de demi-ton' : 'presque un quart de ton'; };
+const isScoop = n => n.att <= -35 && n.att >= -150 && n.t1 - n.t0 >= 0.2;
+function coachItems(s) {
+  const tol = S.tol, it = [], all = s.notes.map((n, i) => i), nm = m => nn(m).s;
+  if (!s.N) return it;
+  for (const g of s.byPitch) {
+    if (g.n < 2 || Math.abs(g.mean) <= tol) continue;
+    const low = g.mean < 0;
+    it.push({ k: 'pitch', score: g.n * (Math.abs(g.mean) - tol) + 5, target: g.target, sign: Math.sign(g.mean),
+      idx: all.filter(i => s.notes[i].target === g.target && Math.abs(s.notes[i].dev) > tol),
+      title: `Tes ${nm(g.target)} sont trop ${low ? 'bas' : 'hauts'}`, short: `tes ${nm(g.target)}, trop ${low ? 'bas' : 'hauts'}`,
+      detail: `En moyenne ${fc(g.mean)}, ${frac(g.mean)}, sur ${g.n} passages.`,
+      tips: low ? ["Écoute la note juste, puis chante-la tenue en visant le centre : l'aiguille du mode direct te guide.", "Pense la note un peu plus haut et garde le souffle actif jusqu'au bout de la note."]
+        : ['Écoute la note juste, puis chante-la plus détendu : la tension de la gorge ou de la mâchoire fait monter.', 'Ne pousse pas le volume sur cette note.'] });
+  }
   const r = s.register;
   if (r && Math.abs(r.high - r.low) >= 10) {
-    if (Math.abs(r.high) >= Math.abs(r.low)) return r.high < 0 ? 'les aigus sont trop bas' : 'les aigus sont trop hauts';
-    return r.low < 0 ? 'les graves sont trop bas' : 'les graves sont trop hauts';
+    const hi = Math.abs(r.high) >= Math.abs(r.low), v = hi ? r.high : r.low;
+    const dup = it.some(x => x.k === 'pitch' && x.sign === Math.sign(v) && (hi ? x.target >= r.hi : x.target <= r.lo));
+    if (Math.abs(v) > tol * 0.7 && !dup) it.push({ k: 'reg', score: (hi ? r.nh : r.nl) * (Math.abs(v) - tol * 0.5),
+      idx: all.filter(i => (hi ? s.notes[i].target >= r.hi : s.notes[i].target <= r.lo) && Math.abs(s.notes[i].dev) > tol),
+      title: `Dans ${hi ? "l'aigu" : 'le grave'}, tu chantes ${v < 0 ? 'bas' : 'haut'}`, short: `${hi ? "l'aigu" : 'le grave'}, trop ${v < 0 ? 'bas' : 'haut'}`,
+      detail: hi ? `À partir de ${nm(r.hi)} : ${fc(r.high)} en moyenne, contre ${fc(r.low)} plus bas.` : `Jusqu'à ${nm(r.lo)} : ${fc(r.low)} en moyenne, contre ${fc(r.high)} plus haut.`,
+      tips: hi ? (v < 0 ? ["Dans l'aigu, garde le soutien du souffle et une voyelle ouverte, sans serrer la gorge.", 'Monte la phrase lentement, note par note, en vérifiant chaque arrivée avec la note juste.']
+                        : ["Dans l'aigu, tu as tendance à pousser : chante plus doucement et relâche la mâchoire.", 'Vise le centre de la note plutôt que le haut.'])
+               : (v < 0 ? ["Dans le grave, garde de l'énergie : la voix a tendance à retomber en fin de phrase.", 'Pense les notes graves claires et légères plutôt que lourdes.']
+                        : ['Dans le grave, détends-toi : inutile de forcer pour faire sonner la note.']) });
   }
-  if (s.mean <= -6) return 'tendance à chanter un peu bas';
-  if (s.mean >= 6) return 'tendance à chanter un peu haut';
-  if (s.drift && s.drift.sig && Math.abs(s.drift.total) >= 10) return s.drift.total < 0 ? 'le chant baisse au fil du temps' : 'le chant monte au fil du temps';
-  return '';
+  // [nom dans le titre, nom court, mot « trop serré », mot « trop large », unité au pluriel]
+  const IVT = { up1: ['Tes demi-tons et tons montants', 'les demi-tons et tons montants', 'serrés', 'larges', 'intervalles montants d\'un demi-ton ou d\'un ton'], upL: ['Tes sauts montants', 'les sauts montants', 'petits', 'grands', 'sauts montants'], dn1: ['Tes demi-tons et tons descendants', 'les demi-tons et tons descendants', 'serrés', 'larges', 'intervalles descendants d\'un demi-ton ou d\'un ton'], dnL: ['Tes sauts descendants', 'les sauts descendants', 'petits', 'grands', 'sauts descendants'] };
+  for (const [key, o] of Object.entries(s.intervals)) {
+    if (o.n < 3 || Math.abs(o.mean) < 10) continue;
+    const up = key.startsWith('up'), narrow = o.mean < 0, T = IVT[key], w = narrow ? T[2] : T[3];
+    it.push({ k: 'iv', score: o.n * (Math.abs(o.mean) - 6), idx: o.idx,
+      title: `${T[0]} sont trop ${w}`, short: `${T[1]}, trop ${w}`,
+      detail: `De ${fca(o.mean)} en moyenne, sur ${o.n} ${T[4]}.`,
+      tips: narrow ? [`Tu n'arrives pas assez ${up ? 'haut' : 'bas'} : entends la note d'arrivée dans ta tête avant de la chanter.`, "Chante l'intervalle lentement, d'abord en glissant, puis net, et vérifie l'arrivée avec la note juste."]
+        : [`Tu dépasses la note d'arrivée : vise-la un peu plus ${up ? 'bas' : 'haut'}.`, "Chante l'intervalle lentement et pose la note d'arrivée sans élan."] });
+  }
+  const el = s.notes.filter(n => n.t1 - n.t0 >= 0.2), sc = all.filter(i => isScoop(s.notes[i]));
+  if (sc.length >= 3 && sc.length >= 0.2 * el.length) it.push({ k: 'att', score: sc.length * 15, idx: sc,
+    title: 'Tu attaques souvent par en dessous', short: 'les attaques par en dessous',
+    detail: `${sc.length} notes sur ${el.length} commencent plus bas puis glissent vers la note (${fc(sc.reduce((a, i) => a + s.notes[i].att, 0) / sc.length)} au départ).`,
+    tips: ['Entends la note avant de chanter, puis pose-la directement au centre.', 'Commence la note sur une consonne nette (« da », « na ») pour ne pas glisser.'] });
+  if (s.drift && s.drift.sig && Math.abs(s.drift.total) >= 10) it.push({ k: 'drift', score: Math.abs(s.drift.total) * 2, idx: all.slice(-3),
+    title: `Tu ${s.drift.total < 0 ? 'baisses' : 'montes'} au fil du chant`, short: `la ${s.drift.total < 0 ? 'baisse' : 'montée'} au fil du chant`,
+    detail: `${fc(s.drift.total)} entre le début et la fin.`,
+    tips: s.drift.total < 0 ? ['Recale-toi de temps en temps sur la note de départ : touche « Note juste ».', "La fatigue du souffle fait baisser : respire avant d'être à court d'air."]
+      : ['Tu montes peu à peu, souvent par tension ou par excitation : reste détendu et réécoute la tonique.'] });
+  if (S.mode === 'abs' && Math.abs(s.off) >= 12 && s.pctAlt - s.pct >= 0.2) it.push({ k: 'off', score: s.N * (Math.abs(s.off) - 8) * (Math.abs(s.off) >= 25 ? 0.8 : 0.3), idx: [],
+    title: `Tout est un peu ${s.off < 0 ? 'bas' : 'haut'}`, short: `un départ un peu ${s.off < 0 ? 'bas' : 'haut'}`,
+    detail: `Ton chant est décalé d'environ ${fca(s.off)} par rapport au diapason. Par rapport à ta propre voix, ${pct(s.pctAlt)} des notes sont justes : tes intervalles tiennent, c'est la note de départ qui est décalée.`,
+    tips: ['Écoute la première note avant de commencer et cale-toi dessus.', "A cappella, ce n'est pas grave : règle la référence sur « Ta propre voix » pour juger tes intervalles."] });
+  if (s.stab != null && s.stab >= 12) it.push({ k: 'stab', score: (s.stab - 8) * s.N * 0.4, idx: all.filter(i => s.notes[i].wander >= s.stab).slice(0, 6),
+    title: 'Tes notes tenues bougent', short: 'la tenue des notes',
+    detail: `Elles varient de ±${fca(s.stab)} en moyenne, vibrato mis à part.`,
+    tips: ["Fais des tenues de 4 temps en gardant l'aiguille au centre, dans le mode direct.", "Garde un débit d'air régulier, sans pousser."] });
+  return it.sort((a, b) => b.score - a.score).slice(0, 3);
+}
+function strengths(s) {
+  const out = [], tol = S.tol;
+  if (!s.N) return out;
+  const good = s.byPitch.filter(g => g.n >= 2 && Math.abs(g.mean) <= tol / 2).sort((a, b) => b.n - a.n).slice(0, 2);
+  if (good.length) out.push(`${good.map(g => nn(g.target).s).join(' et ')} : juste${good.length > 1 ? 's' : ''} en moyenne (${good.map(g => fc(g.mean)).join(', ')}).`);
+  if (s.pct >= 0.7) out.push(`${pct(s.pct)} de tes notes sont dans la tolérance de ±${tol} c.`);
+  if (s.vib && s.vib.rate >= 4.8 && s.vib.rate <= 7 && s.vib.ext >= 15 && s.vib.ext <= 70) out.push(`Vibrato régulier : ${NF1.format(s.vib.rate)} Hz, ±${fca(s.vib.ext)}.`);
+  if (s.stab != null && s.stab <= 6) out.push(`Notes tenues stables : ±${fca(s.stab)}, vibrato mis à part.`);
+  if (s.N >= 8 && !s.notes.some(isScoop)) out.push('Attaques nettes, sans glisser par en dessous.');
+  return out.slice(0, 3).map(frt);
 }
 function headline(s) {
   if (!s.N) return 'Aucune note tenue détectée';
-  const c = clause(s);
-  return frt((s.pct >= 0.8 && !c ? 'Très juste : ' : '') + `${pct(s.pct)} des notes justes à ±${S.tol}${NB}c` + (c ? ` ; ${c}` : ''));
+  const top = COACH[0], base = `${s.inTol} note${s.inTol > 1 ? 's' : ''} juste${s.inTol > 1 ? 's' : ''} sur ${s.N}`;
+  return frt(top ? `${base} ; à travailler d'abord : ${top.short}` : `${base} ; rien de systématique à corriger`);
+}
+const PLAY = '<svg width="11" height="12" viewBox="0 0 11 12" aria-hidden="true"><path d="M1 1v10l9-5z" fill="currentColor"/></svg>';
+function renderCoach() {
+  const el = $('#coach');
+  if (!SUM.N) { el.innerHTML = ''; return; }
+  if (!COACH.length) { el.innerHTML = `<p class="nil">${esc(frt("Pas de défaut qui revienne : les écarts restants sont isolés. Touche une note sur le tracé pour l'écouter avec la note juste."))}</p>`; return; }
+  el.innerHTML = '<h3 class="kh">À travailler</h3>' + COACH.map((c, k) => `<article class="card">
+    <div class="ct"><span class="rank">${k + 1}</span><h4>${esc(frt(c.title))}</h4></div>
+    <p class="cd">${esc(frt(c.detail))}</p>
+    ${c.idx.length ? `<div class="chips"><span class="cl">Réécouter</span>${c.idx.slice(0, 6).map(i => `<button class="chip sm" type="button" data-n="${i}" aria-label="Écouter la note de ${ft(SUM.notes[i].t0, 1)}">${PLAY}${ft(SUM.notes[i].t0, 1)}</button>`).join('')}</div>` : ''}
+    <p class="cw">Comment travailler</p>
+    <ul class="tipl">${c.tips.map(t => `<li>${esc(frt(t))}</li>`).join('')}</ul>
+    ${c.target != null ? `<div class="cact"><button class="chip" type="button" data-ref="${c.target}">${PLAY}Écouter ${nn(c.target).s}</button>${FRAMED ? `<a class="chip" href="${HOSTED}?cible=${c.target}#direct" target="_blank" rel="noopener">S'exercer en direct</a>` : `<button class="chip" type="button" data-ex="${c.target}">S'exercer sur ${nn(c.target).s}</button>`}</div>` : ''}
+  </article>`).join('') + `<p class="cn">${esc(frt('1 c = un centième de demi-ton. Les passages se rejouent avec la note juste par-dessus.'))}</p>`;
+}
+function renderGood() {
+  const g = strengths(SUM), el = $('#good');
+  el.hidden = !g.length;
+  el.innerHTML = g.length ? `<h3>Ce qui va bien</h3><ul>${g.map(t => `<li>${esc(t)}</li>`).join('')}</ul>` : '';
+}
+function renderHint() {
+  const h = $('#hint');
+  if (S.acc) { h.hidden = false; h.textContent = frt("Mode accompagnement : ta voix est repérée à ses micro-variations et à son vibrato, l'instrument est ignoré. C'est un peu moins précis qu'en voix seule ; au casque, le micro n'entend que toi."); }
+  else if (TAKE.kind !== 'demo' && TAKE.res.mixed > 0.08) { h.hidden = false; h.innerHTML = `${esc(frt('Il semble y avoir autre chose que ta voix (instrument, musique de fond).'))} <button class="linkb" type="button" data-acc="1">Analyser avec accompagnement</button>`; }
+  else h.hidden = true;
 }
 function figures(s) {
   return [
@@ -1041,9 +1464,11 @@ function dvbar(v, k) {
 }
 function renderAll() {
   const s = SUM;
+  COACH = coachItems(s);
   $('#fname').innerHTML = esc(TAKE.name) + (TAKE.kind === 'demo' ? '<span class="tag">exemple</span>' : TAKE.kind === 'take' ? '<span class="tag">prise en direct</span>' : '');
   $('#fsub').textContent = [ft(TAKE.dur), `${s.N} note${s.N > 1 ? 's' : ''} tenue${s.N > 1 ? 's' : ''}`, TAKE.kind === 'demo' ? 'voix de synthèse, écarts glissés exprès' : null].filter(Boolean).join(' · ');
   $('#find').textContent = headline(s);
+  renderHint(); renderCoach(); renderGood();
   $('#figs').innerHTML = s.N ? figures(s).map(([l, v, sub, c]) => `<div class="f1"><em>${l}</em><b class="${c}">${v}</b><span>${sub}</span></div>`).join('') : '';
   $('#ins').innerHTML = insights(s).map(t => `<li>${esc(t)}</li>`).join('');
   $('#bynote').innerHTML = s.byPitch.map(g => `<div class="dv"><span class="l">${nn(g.target).s}</span><span class="c">×${g.n}</span>${dvbar(g.mean, cls(g.mean))}<span class="v ${cls(g.mean)}">${fc(g.mean)}</span></div>`).join('') || '<p class="sub">—</p>';
@@ -1245,11 +1670,11 @@ function select(i, playIt) {
 }
 
 /* ---------- direct ---------- */
-const LV = { ws: 0, on: false, stream: null, src: null, proc: null, mute: null, trk: null, chunks: [], n: 0, sr: 48000, frames: [], t: 0, noise: 0.001, peak: 0, cur: null, needle: 0, active: false, last: -9, center: 60, level: 0, hz: 0, raf: 0 };
+const LV = { ws: 0, target: null, ign: 0, acc: null, pend: [], on: false, stream: null, src: null, proc: null, mute: null, trk: null, chunks: [], n: 0, sr: 48000, frames: [], t: 0, noise: 0.001, peak: 0, cur: null, needle: 0, active: false, last: -9, center: 60, level: 0, hz: 0, raf: 0 };
 const lmsg = t => { $('#lmsg').textContent = t || ''; };
 const HOSTED = 'https://mcsdutertre-design.github.io/le-diapason/';
 const FRAME_HINT = "Dans l'aperçu de Claude, le navigateur bloque le micro.";
-const FRAME_HTML = `<b>Dans Claude, le micro est bloqué</b>&#8239;: pas de mesure en temps réel ici. «&#8239;S'enregistrer en vidéo&#8239;» ouvre l'appareil photo&#8239;: chante, valide, et la prise est analysée note par note. Pour le vrai direct, ouvre <a href="${HOSTED}" target="_blank" rel="noopener">la version en ligne</a> dans Safari et autorise le micro.`;
+const FRAME_HTML = `<b>Dans Claude, le micro est bloqué</b>&#8239;: pas de mesure en temps réel ici. «&#8239;S'enregistrer en vidéo&#8239;» ouvre l'appareil photo&#8239;: chante, valide, et la prise est analysée note par note. Pour le vrai direct, ouvre <a href="${HOSTED}" target="_blank" rel="noopener">la version en ligne</a> dans ton navigateur et autorise le micro.`;
 async function liveStart() {
   const ctx = ac(); session('play-and-record');
   const r = ctx.resume ? ctx.resume() : null;
@@ -1263,8 +1688,8 @@ async function liveStart() {
   }
   try { if (r && r.then) await r; } catch (e) {}
   stopPlay(); lmsg('');
-  Object.assign(LV, { on: true, stream, chunks: [], n: 0, sr: ctx.sampleRate, frames: [], t: 0, noise: 0.001, peak: 0, cur: null, needle: 0, active: false, last: -9 });
-  LV.trk = new DSP.Live(ctx.sampleRate, S.range);
+  Object.assign(LV, { on: true, stream, chunks: [], n: 0, sr: ctx.sampleRate, frames: [], t: 0, noise: 0.001, peak: 0, cur: null, needle: 0, active: false, last: -9, ign: 0, acc: null, pend: [] });
+  LV.trk = S.acc ? new DSP.LivePoly(ctx.sampleRate, S.range) : new DSP.Live(ctx.sampleRate, S.range);
   LV.src = ctx.createMediaStreamSource(stream);
   LV.proc = ctx.createScriptProcessor(1024, 1, 1);
   LV.mute = ctx.createGain(); LV.mute.gain.value = 0;
@@ -1282,10 +1707,18 @@ async function liveStart() {
   LV.raf = requestAnimationFrame(liveLoop);
 }
 function liveFrame(f) {
-  const thr = Math.max(0.0015, LV.noise * 3, LV.peak * 0.0178), v = f.f > 0 && f.ap <= 0.25 && f.rms >= thr;
+  const thr = Math.max(0.0015, LV.noise * 3, LV.peak * 0.0178), v = f.f > 0 && f.ap <= 0.25 && f.rms >= thr && f.t >= LV.ign;
   if (!v && f.ap > 0.35) LV.noise += (f.rms - LV.noise) * 0.05;
   LV.peak = Math.max(f.rms, LV.peak * 0.9995);
-  const p = v ? 69 + 12 * Math.log2(f.f / 440) : NaN;
+  let p = v ? 69 + 12 * Math.log2(f.f / 440) : NaN;
+  // anti-sauts : un changement de plus d'un ton et demi doit tenir 4 trames (souvent l'accompagnement)
+  if (p === p) {
+    if (f.t - LV.last > 0.3) LV.acc = null;
+    if (LV.acc !== null && Math.abs(p - LV.acc) > 1.5) {
+      LV.pend.push(p);
+      if (LV.pend.length >= 4 && Math.max(...LV.pend) - Math.min(...LV.pend) < 0.8) { LV.acc = p; LV.pend = []; } else p = NaN;
+    } else { LV.acc = p; LV.pend = []; }
+  }
   // hauteur lissée sur ~180 ms dans la même note : centre du vibrato, pour l'aiguille et la couleur du tracé
   let ps = NaN;
   if (p === p) {
@@ -1323,10 +1756,12 @@ function liveLoop() {
   LV.active = lastPs === lastPs && now - LV.last < 0.25;
   if (LV.active) {
     const pS = lastPs;
-    if (LV.cur === null || Math.abs(pS - LV.cur) > 0.62) LV.cur = DSP.target(pS, cfg());
+    if (LV.target !== null) LV.cur = LV.target;
+    else if (LV.cur === null || Math.abs(pS - LV.cur) > 0.62) LV.cur = DSP.target(pS, cfg());
     LV.needle += ((pS - LV.cur) * 100 - LV.needle) * 0.3; LV.hz = 440 * Math.pow(2, (pS + sh - 69) / 12);
   }
   if (ctr.length) { ctr.sort((a, b) => a - b); const c = ctr[ctr.length >> 1]; LV.center = Math.abs(c - LV.center) > 6 ? c : LV.center + (c - LV.center) * 0.04; }
+  else if (LV.target !== null) LV.center += (LV.target - LV.center) * 0.1;
   liveShow(); drawMeter(); drawTrace();
   LV.raf = requestAnimationFrame(liveLoop);
 }
@@ -1334,15 +1769,17 @@ function liveShow() {
   $('#face').classList.toggle('idle', !LV.active);
   $('#ltime').textContent = ft(LV.n / LV.sr);
   $('#lvl').style.width = clamp((20 * Math.log10(LV.level + 1e-9) + 60) / 60 * 100, 0, 100) + '%';
-  if (LV.cur === null) return;
-  const m = nn(LV.cur), k = cls(LV.needle), a = Math.abs(LV.needle);
+  if (LV.cur === null && LV.target === null) return;
+  const m = nn(LV.cur === null ? LV.target : LV.cur), k = cls(LV.needle), a = Math.abs(LV.needle);
+  if (LV.cur === null) { $('#ln').textContent = m.n; $('#lo').textContent = m.o; return; }
   $('#ln').textContent = m.n; $('#lo').textContent = m.o;
   const lc = $('#lc'); lc.textContent = fc(LV.needle); lc.className = k;
-  const lw = $('#lw'); lw.className = k; lw.textContent = a <= S.tol ? 'juste' : (a <= 2 * S.tol ? 'un peu ' : '') + (LV.needle < 0 ? 'trop bas' : 'trop haut');
+  const lw = $('#lw'); lw.className = k; lw.textContent = a <= S.tol ? 'juste' : (a > 50 ? 'beaucoup ' : a <= 2 * S.tol ? 'un peu ' : '') + (LV.needle < 0 ? 'trop bas' : 'trop haut');
   $('#lf').textContent = NF1.format(LV.hz) + NB + 'Hz';
 }
 function liveIdle() {
   $('#face').classList.add('idle'); $('#ltime').textContent = '0:00'; $('#lvl').style.width = '0';
+  if (!LV.on) { LV.cur = null; if (LV.target !== null) { LV.center = LV.target; const m = nn(LV.target); $('#ln').textContent = m.n; $('#lo').textContent = m.o; $('#lc').textContent = '—'; $('#lc').className = ''; $('#lw').className = ''; $('#lw').textContent = 'Écoute la note, puis chante-la'; $('#lf').textContent = NF1.format(440 * Math.pow(2, (LV.target + shiftAbs() - 69) / 12)) + NB + 'Hz'; } }
   drawMeter(); drawTrace();
 }
 function drawMeter() {
@@ -1411,10 +1848,14 @@ function syncSettings() {
   $('#tonic').disabled = S.scale === 'chrom';
   $$('.rn').forEach(e => { e.textContent = refName(); });
   $('#refb').setAttribute('aria-pressed', String(S.ref));
+  const ts = $('#tsel'), opts = ['<option value="">La plus proche</option>'];
+  for (let m = 84; m >= 36; m--) opts.push(`<option value="${m}">${nn(m).s}</option>`);
+  ts.innerHTML = opts.join(''); ts.value = LV.target === null ? '' : String(LV.target);
 }
 function changed(k) {
   save(); syncSettings();
-  if (k === 'range') { if (TAKE) load(TAKE.x, TAKE.sr, TAKE.name, TAKE.kind); return; }
+  if (k === 'acc' && LV.on) LV.trk = S.acc ? new DSP.LivePoly(LV.sr, S.range) : new DSP.Live(LV.sr, S.range);
+  if (k === 'range' || k === 'acc') { if (TAKE) load(TAKE.x, TAKE.sr, TAKE.name, TAKE.kind); return; }
   if (TAKE) recompute();
   if (LV.on) LV.cur = null; else if (!$('#live').hidden) liveIdle();
 }
@@ -1450,6 +1891,25 @@ $('#zout').addEventListener('click', () => zoom(1.6));
 $('#zall').addEventListener('click', () => { if (TAKE) setView(0, TAKE.dur); });
 $('#sel').addEventListener('click', e => { const b = e.target.closest('button[data-a]'); if (b && SEL >= 0) playNote(SEL, b.dataset.a); });
 $('#ntab').addEventListener('click', e => { const r = e.target.closest('tr[data-i]'); if (r) select(+r.dataset.i, true); });
+function refTone(m, dur) {
+  const ctx = ac(); session('playback'); try { ctx.resume(); } catch (e) {}
+  if (!P.wave) P.wave = ctx.createPeriodicWave(new Float32Array([0, 0, 0, 0, 0, 0]), new Float32Array([0, 1, 0.42, 0.2, 0.09, 0.04]));
+  const o = ctx.createOscillator(), g = ctx.createGain(), t0 = ctx.currentTime + 0.03, sh = SUM && !$('#rec').hidden ? SUM.shift : shiftAbs();
+  o.setPeriodicWave(P.wave); o.frequency.value = 440 * Math.pow(2, (m + sh - 69) / 12);
+  g.gain.setValueAtTime(0, t0); g.gain.linearRampToValueAtTime(0.2, t0 + 0.03); g.gain.setValueAtTime(0.2, t0 + dur - 0.08); g.gain.linearRampToValueAtTime(0, t0 + dur);
+  o.connect(g); g.connect(ctx.destination); o.start(t0); o.stop(t0 + dur + 0.05);
+  if (LV.on) LV.ign = LV.t + dur + 0.25;
+}
+function practice(m) { LV.target = m; syncSettings(); setTab('live', true); window.scrollTo(0, 0); }
+$('#coach').addEventListener('click', e => {
+  const b = e.target.closest('button'); if (!b || !SUM) return;
+  if (b.dataset.n != null) { const i = +b.dataset.n; select(i, false); playNote(i, 'both'); }
+  else if (b.dataset.ref != null) refTone(+b.dataset.ref, 1.4);
+  else if (b.dataset.ex != null) practice(+b.dataset.ex);
+});
+$('#hint').addEventListener('click', e => { const b = e.target.closest('button[data-acc]'); if (b) { S.acc = 1; changed('acc'); } });
+$('#tsel').addEventListener('change', e => { LV.target = e.target.value === '' ? null : +e.target.value; LV.cur = null; if (!LV.on) liveIdle(); });
+$('#tplay').addEventListener('click', () => { const m = LV.target !== null ? LV.target : LV.cur; if (m !== null) refTone(m, 1.4); });
 $('#recb').addEventListener('click', () => { if (FRAMED) { $('#cam').click(); return; } if (LV.on) liveStop(); else liveStart(); });
 document.addEventListener('keydown', e => {
   if (e.code !== 'Space' || /INPUT|SELECT|TEXTAREA|BUTTON/.test(document.activeElement && document.activeElement.tagName) || $('#rec').hidden || !TAKE) return;
@@ -1460,6 +1920,8 @@ function summaryText() {
   L.push(`Réglages : ${refName()} = ${NF1.format(S.a4)} Hz · référence : ${S.mode === 'abs' ? 'le diapason' : 'ta propre voix'} · gamme : ${S.scale === 'chrom' ? 'chromatique' : NM[S.nota].mixed[S.tonic] + (S.scale === 'major' ? ' majeur' : ' mineur')} · tolérance ±${S.tol} c`);
   L.push('', headline(s) + '.');
   if (s.N) for (const [l, v, sub] of figures(s)) L.push(`${l} : ${v} (${sub})`);
+  if (COACH.length) { L.push('', 'À travailler :'); COACH.forEach((c, k) => L.push(`${k + 1}. ${frt(c.title)} — ${frt(c.detail)}`, ...c.tips.map(t => '   · ' + frt(t)))); }
+  const gd = strengths(s); if (gd.length) L.push('', 'Ce qui va bien :', ...gd.map(t => '- ' + t));
   L.push('', 'Constats :', ...insights(s).map(t => '- ' + t));
   if (s.N) {
     L.push('', 'Par note :', ...s.byPitch.map(g => `${nn(g.target).s} ×${g.n} : ${fc(g.mean)}`));
@@ -1487,6 +1949,10 @@ if (document.fonts && document.fonts.ready) document.fonts.ready.then(redraw);
 /* ---------- démarrage : exemple chargé ---------- */
 readColors(); syncSettings();
 setTab(location.hash === '#direct' ? 'live' : 'rec');
+{
+  let cb = NaN; try { cb = parseInt(new URLSearchParams(location.search).get('cible'), 10); } catch (e) {}
+  if (cb >= 30 && cb <= 100 && !FRAMED) { LV.target = cb; syncSettings(); setTab('live'); }
+}
 const demo = DSP.demo(24000);
 load(demo.samples, demo.sr, '«\u202FAu clair de la lune\u202F»', 'demo');
 }
