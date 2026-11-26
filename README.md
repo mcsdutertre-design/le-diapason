@@ -9,3 +9,7 @@ Justesse de la voix, note par note : analyse d'un enregistrement et mesure en di
 Tout est calculé dans le navigateur ; aucun son n'est envoyé.
 
 Page : https://mcsdutertre-design.github.io/le-diapason/
+
+## L'Atelier
+
+Le dossier `atelier/` contient L'Atelier, entraînement de l'oreille et du solfège, en version installable qui marche hors ligne : https://mcsdutertre-design.github.io/le-diapason/atelier/
