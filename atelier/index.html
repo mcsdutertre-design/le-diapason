@@ -419,6 +419,11 @@ body{background:var(--bg);color:var(--ink);font-family:'Space Grotesk',system-ui
 .bar5 i{display:block;height:100%;border-radius:3px;background:var(--verd);}
 .cardDay{border-color:var(--verd);background:linear-gradient(135deg,rgba(74,148,134,.22),rgba(194,160,78,.08));}
 .cardDay .cardK{color:var(--verd);}
+.instCard{cursor:default;border-color:var(--gold);margin-bottom:12px;}
+.instCard .cardK{color:var(--gold);align-items:center;}
+.instHow{display:block;margin-top:8px;font-size:.86rem;line-height:1.5;color:var(--muted);}
+.instX{background:none;border:none;color:var(--muted);font-size:.9rem;min-width:44px;min-height:44px;margin:-14px -12px -14px 0;cursor:pointer;}
+.instGo{margin-top:14px;}
 .cardPath{border-color:rgba(194,160,78,.7);background:linear-gradient(135deg,rgba(194,160,78,.14),rgba(25,28,37,.6) 70%);}
 .cardPath .cardK{color:var(--gold);}
 .cardPath .bar5 i{background:var(--gold);}
@@ -4251,7 +4256,7 @@ function buildSettings(){
   group('Données');
   if(!window.ATELIER_HL){                          // depuis Claude : l'appli installable, qui marche sans réseau
     var hl=document.createElement('div');hl.className='setRow';
-    hl.innerHTML='<div class="sl">Hors ligne<small>l\'appli à installer sur ton téléphone : ouvre-la dans Chrome, puis ⋮ › Installer l\'application<br>'+HOSTED_URL.replace(/^https:\/\//,'')+'</small></div>'+
+    hl.innerHTML='<div class="sl">Hors ligne<small>l\'appli à installer sur ton téléphone : ouvre cette adresse dans Chrome, elle te propose de s\'installer<br>'+HOSTED_URL.replace(/^https:\/\//,'')+'</small></div>'+
       '<div class="seg"><a href="'+HOSTED_URL+'" target="_blank" rel="noopener">Ouvrir</a></div>';
     b.appendChild(hl);
   }
@@ -5154,6 +5159,21 @@ function weakKinds(n){
     .filter(function(x){return x.e!=null&&x.n>=4&&x.e>=.3;}).sort(function(a,b){return b.e-a.e;}).slice(0,n);
 }
 function lvTagHtml(k){var L=LV(k);return '<span class="lvTag lv'+lvTier(k,L)+'" title="'+lvName(k,L)+'">N'+L+(nLv(k)!==4?'/'+nLv(k):'')+'</span>';}
+/* installer L'Atelier : une touche quand le navigateur le permet, sinon le chemin dans ses menus */
+var instEvt=null;
+window.addEventListener('beforeinstallprompt',function(e){e.preventDefault();instEvt=e;try{buildHome();}catch(x){}});
+window.addEventListener('appinstalled',function(){instEvt=null;S.hlHide=true;save();try{toast('L\'Atelier est installé : ouvre-le depuis ton écran d\'accueil','up');buildHome();}catch(x){}});
+function isStandalone(){try{return matchMedia('(display-mode: standalone)').matches||navigator.standalone===true;}catch(e){return false;}}
+function installCard(){
+  if(!window.ATELIER_HL||isStandalone()||S.hlHide)return '';
+  var ios=/iPhone|iPad|iPod/.test(navigator.userAgent)||(navigator.platform==='MacIntel'&&navigator.maxTouchPoints>1);
+  var how=instEvt?'Une touche, et L\'Atelier s\'ouvre depuis ton écran d\'accueil, même sans réseau.'
+    :ios?'Dans Safari : touche Partager, puis « Sur l\'écran d\'accueil ».'
+    :'Dans Chrome : ⋮, puis « Ajouter à l\'écran d\'accueil » et « Installer ». Si cette page s\'est ouverte dans Claude, commence par ⋮ › « Ouvrir dans Chrome ».';
+  return '<div class="card instCard"><span class="cardK"><span>Hors ligne</span><button class="instX" id="instX" aria-label="Masquer">✕</button></span>'+
+    '<span class="cardT">Installer L\'Atelier</span><span class="instHow">'+how+'</span>'+
+    (instEvt?'<button class="btn onGo instGo" id="instGo">Installer</button>':'')+'</div>';
+}
 function buildHome(){
   var b=document.getElementById('homeBody');if(!b)return;
   var hr=new Date().getHours(),hello=document.getElementById('hello');
@@ -5164,6 +5184,7 @@ function buildHome(){
   var acc=S.seen>0?Math.round(S.ok/S.seen*100):0,h='';
   var dstr='';try{dstr=new Date().toLocaleDateString('fr-FR',{weekday:'long',day:'numeric',month:'long'});}catch(e){}
   h+='<div class="rub first"><span class="rubT">Aujourd\'hui</span><span class="rubT">'+dstr+'</span></div>';
+  h+=installCard();
   h+='<button class="card cardDay" id="hDay"><span class="cardK"><span>Séance du jour</span><span>'+td+' / '+goal+'</span></span>'+
      '<span class="cardT">'+(td>=goal?'Objectif atteint. Une de plus ?':'12 questions, 6 minutes')+'</span>'+
      '<span class="chips">'+plan.map(function(p){return '<span>'+p+'</span>';}).join('')+'</span>'+
@@ -5195,6 +5216,11 @@ function buildHome(){
   var g=function(id){return document.getElementById(id);};
   if(g('hDay'))g('hDay').addEventListener('click',startDaily);
   if(g('hPath'))g('hPath').addEventListener('click',function(){startStep(ni);});
+  if(g('instGo'))g('instGo').addEventListener('click',function(){            // l'invite d'installation du navigateur
+    var e=instEvt;if(!e)return;instEvt=null;
+    try{e.prompt();e.userChoice.then(function(r){if(r&&r.outcome==='accepted'){S.hlHide=true;save();}else toast('Installation annulée');buildHome();});}catch(x){buildHome();}
+  });
+  if(g('instX'))g('instX').addEventListener('click',function(){S.hlHide=true;save();buildHome();});
   wireShellLinks(b);
 }
 /* liens communs des rubriques : onglet, feuille, exercice */

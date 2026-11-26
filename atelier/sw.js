@@ -1,6 +1,6 @@
 /* L'Atelier hors ligne : la page, ses polices et ses icônes restent dans le téléphone.
    En ligne, la page se met à jour d'elle-même ; sans réseau, la copie gardée prend le relais. */
-const CACHE = 'atelier-572d1eded7';
+const CACHE = 'atelier-eb352806df';
 const FILES = [
  "./",
  "./index.html",
